@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Посты</title>
+</head>
+<body>
+    <h1>Посты - {{ user.username }}а</h1>
+    {% for post in posts %}
+        <p>Тема: {{ post.title }}</p>
+        <h5>Текст: {{ post.body }}</h5>
+    {% endfor %}
+</body>
+</html>
