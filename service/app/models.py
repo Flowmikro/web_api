@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
 
 
 class Post(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField()
 
