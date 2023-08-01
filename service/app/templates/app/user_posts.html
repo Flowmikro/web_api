@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Посты</title>
-</head>
-<body>
-    <a href="{% url 'user_list' %}">Главная</a>
-    <h1>Посты - {{ user.username }}</h1>
+{% extends "app/base.html" %}
+
+{% block title %} Посты {% endblock %}
+
+{% block content %}
+    <h1>Что пишет {{ user.username }}</h1>
     {% for post in posts %}
         {% if request.user.is_authenticated and user == request.user %}
-            <p>Тема: {{ post.title }}</p>
-            <h5>Текст: {{ post.body }}</h5>
-            <a href="{% url 'delete_post' post.id %}">Удалить пост</a>
+            <p> {{ post.title }}</p>
+            <h5>{{ post.body }}</h5>
+           <button type="submit" class="btn btn-primary">Войти</button> <a href="{% url 'delete_post' post.id %}">Удалить пост</a>
         {% else %}
-            <p>Тема: {{ post.title }}</p>
-            <h5>Текст: {{ post.body }}</h5>
+            <p>{{ post.title }}</p>
+            <h5>{{ post.body }}</h5>
         {% endif %}
     {% endfor %}
-</body>
-</html>
+{% endblock %}

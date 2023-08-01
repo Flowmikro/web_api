@@ -1,14 +1,13 @@
-
-from django.contrib.auth import login
-from django.shortcuts import redirect, reverse, render
-from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import CreateView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from django.contrib.auth import login
+from django.shortcuts import redirect, reverse
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -44,12 +43,12 @@ class UserAdd(LoginRequiredMixin, APIView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    @method_decorator(login_required)  # Обернуть методы get() и post() с помощью декоратора для проверки авторизации
+    @method_decorator(login_required)  # Обернул методы get() и post() с помощью декоратора для проверки авторизации
     def get(self, request):
         form = PostForm()
         return Response({'form': form})
 
-    @method_decorator(login_required)  # Обернуть методы get() и post() с помощью декоратора для проверки авторизации
+    @method_decorator(login_required)
     def post(self, request):
         form = PostForm(request.POST, user=request.user)
         if form.is_valid():

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Пользователи</title>
-</head>
-<body>
+{% extends "app/base.html" %}
+
+{% block title %} Ваши посты {% endblock %}
+
+{% block content %}
     <h2>Пользователи</h2>
     <ul>
         {% for user in users %}
@@ -20,5 +18,4 @@
         <p>Чтобы писать или удалять посты.</p>
         <p>Вы должны <a href="{% url 'login' %}">войти</a> или <a href="{% url 'register' %}">зарегистрироваться</a></p>
     {% endif %}
-</body>
-</html>
+{% endblock %}

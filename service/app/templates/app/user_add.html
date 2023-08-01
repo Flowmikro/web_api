@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>{{ user.username }}'а Посты</h1>
+{% extends "app/base.html" %}
+
+{% block title %} Написать пост {% endblock %}
+
+{% block content %}
+
+<h1>Что вы хотите написать {{ user.username }}?</h1>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Добавить</button>
 </form>
-</body>
-</html>
+
+{% endblock %}
