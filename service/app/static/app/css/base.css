@@ -1,0 +1,56 @@
+/*css на на весь html*/
+.text{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+li {
+    list-style-type: none; /* Убираем маркеры */
+}
+ul {
+    padding-left: 10px; /* Сдвигаем список влево */
+}
+
+a {
+    color: rgb(255, 255, 255);
+}
+
+a {
+  color: #ffffff; /* Цвет обычной ссылки */
+    position: relative;
+    text-decoration: none; /* Убираем подчеркивание */
+}
+a:hover:after {
+    content: "";
+      width: 100%;
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 2px; /* Высота линии */
+      background-color: rgb(15, 25, 164); /* Цвет подчеркивания при появлении линии*/
+
+}
+
+a:visited {
+  color: #1364a5; /* Цвет посещённой ссылки */
+}
+
+a:hover {
+  color: #000000;/* Цвет ссылки при наведении на нее курсора мыши */
+}
+
+/*css на register.html*/
+.login {
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+/*css на base.html*/
+.base_text {
+    padding-left: 10px;
+}
+
+.navnav {
+    padding-left: 10px;
+}
