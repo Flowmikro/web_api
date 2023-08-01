@@ -4,11 +4,13 @@
 
 {% block content %}
 
-<h1>Что вы хотите написать {{ user.username }}?</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Добавить</button>
+<div class="text">
+  <h1>Что хотите написать, {{ user.username }}?</h1>
+      <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Отправить</button>
 </form>
+</div>
 
 {% endblock %}

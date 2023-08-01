@@ -3,15 +3,17 @@
 {% block title %} Посты {% endblock %}
 
 {% block content %}
+<div class="text">
     <h1>Что пишет {{ user.username }}</h1>
     {% for post in posts %}
         {% if request.user.is_authenticated and user == request.user %}
-            <p> {{ post.title }}</p>
-            <h5>{{ post.body }}</h5>
-           <button type="submit" class="btn btn-primary">Войти</button> <a href="{% url 'delete_post' post.id %}">Удалить пост</a>
+            <h5>{{ post.title }}</h5>
+            <p>{{ post.body }}</p>
+            <button type="submit" class="btn btn-primary"><a class="nav-link" href="{% url 'delete_post' post.id %}">Удалить пост</a></button>
         {% else %}
-            <p>{{ post.title }}</p>
-            <h5>{{ post.body }}</h5>
+            <h5>{{ post.title }}</h5>
+            <p>{{ post.body }}</p>
         {% endif %}
     {% endfor %}
+</div>
 {% endblock %}
