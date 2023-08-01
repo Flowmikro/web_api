@@ -1,5 +1,6 @@
+
 from django.contrib.auth import login
-from django.shortcuts import redirect, reverse
+from django.shortcuts import redirect, reverse, render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
@@ -39,10 +40,6 @@ class UserAdd(LoginRequiredMixin, APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'app/user_add.html'
 
-    # @csrf_exempt
-    # def dispatch(self, request, *args, **kwargs):
-    #     return super().dispatch(request, *args, **kwargs)
-
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -60,6 +57,30 @@ class UserAdd(LoginRequiredMixin, APIView):
             return redirect('/')
         else:
             return Response({'form': form})
+
+
+class PostDelete(LoginRequiredMixin, APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'app/delete_post.html'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    @method_decorator(login_required)
+    def delete(self, request, **kwargs):
+        post_id = kwargs.get('post_id')
+        post = get_object_or_404(Post, id=post_id, user=request.user)
+        post.delete()
+        return redirect(reverse('user_posts', args=[request.user.id]))
+
+    @method_decorator(login_required)
+    def get(self, request, **kwargs):
+        return self.delete(request, **kwargs)
+
+    @method_decorator(login_required)
+    def post(self, request, **kwargs):
+        return self.delete(request, **kwargs)
 
 
 class RegisterUser(CreateView):
