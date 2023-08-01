@@ -12,6 +12,7 @@ Python, Django, Django REST, HTML/CSS, Docker
 git clone https://github.com/Flowmikro/web_api.git \
 cd web_api\
 docker-compose build\
-docker-compose up
+docker-compose up \
+команды docker-compose run --rm web-app sh -c "python manage.py <ваша команда>"
 
 
