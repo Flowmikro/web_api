@@ -1,13 +1,27 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
+from django.contrib.auth import get_user_model
 from .models import CustomUser, Post
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['title', 'body']
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if self.user:
+            self.initial['user'] = self.user
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        if self.user:
+            instance.user = self.user
+        if commit:
+            instance.save()
+        return instance
 
 
 class RegisterForm(UserCreationForm):
