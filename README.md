@@ -8,4 +8,6 @@
 Пользовательский интерфейс
 # Стек
 Python, Django, Django REST, HTML/CSS, Docker
+# Установить 
+git clone 
 
