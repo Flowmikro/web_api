@@ -12,10 +12,12 @@
         {% endfor %}
     </ul>
     {% if request.user.is_authenticated %}
-        <p>Вы вошли</p> <a href="{% url 'logout' %}">Выйти</a>
+        <p>Вы вошли {{ users.username }}.</p> <a href="{% url 'logout' %}">Выйти</a>
     {% else %}
-        <a href="{% url 'login' %}">Регичтация</a>
+        <p>Чтобы писать или удалять посты.</p>
+        <p>Вы должны <a href="{% url 'login' %}">войти</a> или <a href="{% url 'register' %}">зарегистрироваться</a></p>
     {% endif %}
     <a href="{% url 'user_add' %}">Добавить пост</a>
+
 </body>
 </html>

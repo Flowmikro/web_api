@@ -1,4 +1,6 @@
-from django.shortcuts import redirect, render
+from django.contrib.auth import login
+from django.shortcuts import redirect, reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
@@ -7,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from .models import CustomUser, Post
-from .forms import PostForm
+from .forms import PostForm, RegisterForm
 
 
 class UserList(APIView):
@@ -51,4 +53,11 @@ class UserAdd(APIView):
 
 
 class RegisterUser(CreateView):
-    ...
+    form_class = RegisterForm
+    template_name = 'app/register.html'
+    success_url = reverse_lazy('user_list')
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('user_add')
