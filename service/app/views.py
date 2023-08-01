@@ -51,7 +51,7 @@ class UserAdd(LoginRequiredMixin, APIView):
         form = PostForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('user_list')
         else:
             return Response({'form': form})
 
