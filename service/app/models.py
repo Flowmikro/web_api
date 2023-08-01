@@ -8,8 +8,8 @@ class CustomUser(AbstractUser):  # Копирую модель User, в нем �
 
 class Post(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    body = models.TextField()
+    title = models.CharField('Заголовок', max_length=100)
+    body = models.TextField('Текст')
 
     def __str__(self):
         return str(self.user)
