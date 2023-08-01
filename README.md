@@ -9,9 +9,9 @@
 # Стек
 Python, Django, Django REST, HTML/CSS, Docker
 # Установка
-git clone https://github.com/Flowmikro/web_api.git
-cd web_api
-docker-compose build
-docker-compose up 
+git clone https://github.com/Flowmikro/web_api.git\
+cd web_api\
+docker-compose build\
+docker-compose up
 
 
