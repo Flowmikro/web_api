@@ -13,6 +13,6 @@ Python, Django, Django REST, HTML/CSS, Docker
 Перейти в директорию: cd web_api\
 Построение образа: docker-compose build\
 Запуск контейнера: docker-compose up \
-команды docker-compose run --rm web-app sh -c "python manage.py <ваша команда>"
+Команды: docker-compose run --rm web-app sh -c "python manage.py <ваша команда>"
 
 
