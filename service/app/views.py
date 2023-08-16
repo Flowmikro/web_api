@@ -4,14 +4,13 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 
-from .app_services import _delete_post, _select_user_post
-from .models import CustomUser
+from .app_services import _delete_post, _select_user_post, _user_list_db
 from .forms import PostForm, RegisterForm
 
 
 def user_list(request):
     """Выводим список пользователей"""
-    users = CustomUser.objects.all()
+    users = _user_list_db()
     return render(request, 'app/user_list.html', {'users': users})
 
 

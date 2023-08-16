@@ -4,6 +4,12 @@ from django.shortcuts import get_object_or_404
 from .models import Post, CustomUser
 
 
+def _user_list_db():
+    """Выводим пользователей из БД"""
+    users = CustomUser.objects.all()
+    return users
+
+
 def _select_user_post(user_id):
     """Выводит посты конкретного пользователя"""
     user = get_object_or_404(CustomUser, id=user_id)
