@@ -10,7 +10,7 @@
 Python, Django, Django REST, HTML/CSS, Docker
 # Установка
 Клонирование репозитория: git clone https://github.com/Flowmikro/web_api.git \
-Перейти в директорию: cd service\ 
+Перейти в директорию: cd service \ 
 Построение образа: docker-compose build\
 Запуск контейнера: docker-compose up \
 Команды: docker-compose run --rm web-app sh -c "python manage.py <ваша команда>"
